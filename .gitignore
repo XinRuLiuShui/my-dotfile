@@ -1,0 +1,9 @@
+*
+
+!.gitignore
+!.emacs
+!.xinitrc
+!.config
+!.config/i3
+!.config/i3/config
+!.profile
