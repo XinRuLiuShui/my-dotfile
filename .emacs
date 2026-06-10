@@ -96,17 +96,10 @@
 (setq-default c-basic-offset 4)
 (setq-default indent-tabs-mode nil)  ;; 使用空格代替 Tab
 
-;; 直接设置，不通过函数
+;; 设置字体
 (set-face-attribute 'default nil :font "JetBrains Mono-18")
 
-;; 快速跳转到任意字符
-;;(global-set-key (kbd "C-:") 'avy-goto-char);; 快速跳转到任意字符
-;;
-;;(global-set-key (kbd "M-g w") 'avy-goto-word-1)
-;;
-;;(global-set-key (kbd "M-g f") 'avy-goto-line)
-
-;; 使用 use-package（现代 Emacs 配置标准）
+;; avy配置
 (use-package avy
   :ensure t
   :defer t  ; 延迟加载，提升启动速度
