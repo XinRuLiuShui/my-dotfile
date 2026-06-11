@@ -9,5 +9,6 @@
 !.config/i3status
 !.config/i3status/config
 !.config/i3status/my_i3status.sh
+!.config/i3status/test_date.py
 !.profile
 
