@@ -6,9 +6,9 @@
                          ("nongnu" . "https://mirrors.tuna.tsinghua.edu.cn/elpa/nongnu/")
                          ("melpa"  . "https://mirrors.tuna.tsinghua.edu.cn/elpa/melpa/")))
 
-(require 'package)
-(add-to-list 'package-archives
-             '("melpa" . "https://melpa.org/packages/") t)
+;(require 'package)
+;(add-to-list 'package-archives
+;             '("melpa" . "https://melpa.org/packages/") t)
 
 (package-initialize) ;; You might already have this line
 (unless package-archive-contents
