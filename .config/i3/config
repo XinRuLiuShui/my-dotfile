@@ -225,6 +225,8 @@ bindsym Print exec  flameshot gui
 
 exec_always --no-startup-id dunst
 
-exec_always --no-startup-id  feh --bg-scale ~/Pictures/1.png
+#exec_always --no-startup-id  feh --bg-scale ~/Pictures/1.png
+
+exec_always --no-startup-id  feh --bg-scale ~/Pictures/ducati-monster-100-3840x2160-26503.jpg
 
 exec_always --no-startup-id flameshot

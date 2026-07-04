@@ -32,7 +32,7 @@
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
- '(package-selected-packages '(avy company lsp-ui magit modus-themes)))
+ '(package-selected-packages nil))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
@@ -69,6 +69,7 @@
 (when (fboundp 'eglot-ensure)
   (add-hook 'c-mode-hook 'eglot-ensure)
   (add-hook 'c++-mode-hook 'eglot-ensure))
+  (add-hook 'python-mode-hook 'eglot-ensure)
 
 ;; 5.4 配置 Company 使用 Eglot 的补全源
 (defun my-c-mode-company-setup ()
@@ -90,14 +91,41 @@
 (add-hook 'c++-mode-hook
           (lambda () (add-hook 'before-save-hook 'delete-trailing-whitespace nil t)))
 
+(add-hook 'python-mode-hook (lambda () (electric-pair-mode 1)))
 ;; ============================================================
 ;; 6. C语言代码格式化（缩进风格）
 ;; ============================================================
 (setq-default c-basic-offset 4)
 (setq-default indent-tabs-mode nil)  ;; 使用空格代替 Tab
 
+;; ============================================================
+;; 7. Python 补全（基于已有的 Company + Eglot）
+;; ============================================================
+
+;; 7.1 打开 Python 文件时自动启动 LSP 客户端 (eglot)
+;; 前提：已安装 Python 语言服务器（推荐 python3-pylsp）
+(add-hook 'python-mode-hook 'eglot-ensure)
+
+;; 7.2 设置 Python 模式下的 company 补全后端（与 C/C++ 类似）
+(defun my-python-mode-company-setup ()
+  "设置 Python 模式下 company 的补全后端"
+  (setq-local company-backends
+              '((company-capf       ; LSP 补全（eglot 提供）
+                 company-dabbrev-code ; 代码中的单词补全
+                 company-yasnippet)))) ; 代码片段补全（如已安装）
+
+(add-hook 'python-mode-hook 'my-python-mode-company-setup)
+
+;; 7.3 （可选）Python 特定的代码格式化：使用 black 或 autopep8
+;; 这需要额外安装对应的格式化工具，并通过 eglot 或单独配置实现
+;; 如果不想配置，Emacs 默认的 indent 也能工作
+
+
 ;; 设置字体
 (set-face-attribute 'default nil :font "JetBrains Mono-18")
+;;(set-face-attribute 'default nil :font "IBM Plex Mono-regular-italic-18")
+;;(set-face-attribute 'default nil :font (font-spec :family "IBMPlexMono" :size 26 :weight 'Regular :slant 'italic))
+;;(set-face-attribute 'default nil :font (font-spec :family "IBMPlexMono" :size 26 :weight 'Regular ))
 
 ;; avy配置
 (use-package avy
@@ -107,3 +135,16 @@
          ("M-g w" . avy-goto-word-1)
          ("M-g f" . avy-goto-line))
 )
+
+(setq inhibit-splash-screen t)
+(setq make-backup-files nil)
+
+(use-package ace-window
+  :ensure t
+  :bind (("M-o" . ace-window)))
+
+(use-package consult
+  :ensure t
+  :bind (("C-x b" . consult-buffer)
+         )
+  )
