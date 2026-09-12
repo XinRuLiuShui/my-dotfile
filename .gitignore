@@ -13,3 +13,5 @@
 !.profile
 !.emacs.snippets/
 !.emacs.snippets/**
+!.emacs.d/
+!.emacs.d/emacs-programming-extra.el

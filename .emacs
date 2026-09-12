@@ -1,5 +1,6 @@
 (setq custom-file (expand-file-name "~/.emacs.custom.el"))
 (load custom-file 'noerror)
+(load-file "~/.emacs.d/emacs-programming-extra.el")
 
 (menu-bar-mode -1)
 (tool-bar-mode -1)
@@ -47,16 +48,16 @@
   (setq company-minimum-prefix-length 1)
   (setq company-dabbrev-downcase nil))
 
-;;(defun my-company-setup ()
-;;  "设置 company 的补全后端，不用 LSP，纯文本匹配 + 代码片段"
-;;  (setq-local company-backends
-;;              '((company-dabbrev-code    ;; 代码中的单词补全
-;;                 company-dabbrev         ;; 当前 buffer 中的单词补全
-;;                 company-yasnippet       ;; 代码片段补全
-;;                 company-files           ;; 文件路径补全
-;;                 company-keywords))))    ;; 语言关键字补全
-;;
-;;(add-hook 'c-mode-hook 'my-company-setup)
+(defun my-company-setup ()
+  "设置 company 的补全后端，不用 LSP，纯文本匹配 + 代码片段"
+  (setq-local company-backends
+              '((company-dabbrev-code    ;; 代码中的单词补全
+                 company-dabbrev         ;; 当前 buffer 中的单词补全
+                 company-yasnippet       ;; 代码片段补全
+                 company-files           ;; 文件路径补全
+                 company-keywords))))    ;; 语言关键字补全
+
+(add-hook 'c-mode-hook 'my-company-setup)
 ;;(add-hook 'python-mode-hook 'my-company-setup)
 
 

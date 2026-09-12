@@ -54,7 +54,9 @@ tiling_drag modifier titlebar
 
 # start a terminal
 #bindsym $mod+Return exec i3-sensible-terminal bindsym $mod+Return
-bindsym $mod+Return exec stterm -f 'JetBrains Mono:size=18'
+#bindsym $mod+Return exec stterm -f 'JetBrains Mono:size=18'
+
+bindsym $mod+Return exec qterminal
 
 # kill focused window
 bindsym $mod+q kill
@@ -230,3 +232,8 @@ exec_always --no-startup-id dunst
 exec_always --no-startup-id  feh --bg-scale ~/Pictures/ducati-monster-100-3840x2160-26503.jpg
 
 exec_always --no-startup-id flameshot
+
+exec_always --no-startup-id v2rayn
+
+
+assign [class="v2rayN"] $ws9
