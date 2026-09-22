@@ -184,14 +184,14 @@
   "在项目（git 仓库等）内快速找文件。"
   (interactive)
   (if (fboundp 'project-find-file)
-      (project-find-file)
+      (call-interactively #'project-find-file)
     (message "需要 Emacs 28+ 的 project.el")))
 
 (defun my-project-search ()
   "在项目内搜索正则表达式。"
   (interactive)
   (if (fboundp 'project-find-regexp)
-      (project-find-regexp)
+      (call-interactively #'project-find-regexp)
     (message "需要 Emacs 28+ 的 project.el")))
 
 ;; ---------------------------------------------------------------------------
