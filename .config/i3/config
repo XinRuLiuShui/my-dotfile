@@ -229,11 +229,16 @@ exec_always --no-startup-id dunst
 
 #exec_always --no-startup-id  feh --bg-scale ~/Pictures/1.png
 
-exec_always --no-startup-id  feh --bg-scale ~/Pictures/ducati-monster-100-3840x2160-26503.jpg
+exec_always --no-startup-id  feh --bg-scale ~/Pictures/mountain-landscape-3840x2160-26973.png
 
 exec_always --no-startup-id flameshot
 
+assign [class="firefox-esr"] $ws1
+assign [class="Emacs"] $ws2
+assign [class="v2rayN"] $ws9
 exec_always --no-startup-id v2rayn
 
+for_window [class="copyq"] floating enable
+exec_always --no-startup-id copyq
 
-assign [class="v2rayN"] $ws9
+
