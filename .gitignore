@@ -14,4 +14,9 @@
 !.emacs.snippets/
 !.emacs.snippets/**
 !.emacs.d/
+!.emacs.d/init.el
 !.emacs.d/emacs-programming-extra.el
+!.emacs.d/themes/
+!.emacs.d/themes/**
+!.emacs.d/lisp/
+!.emacs.d/lisp/**

@@ -159,18 +159,23 @@
 ;; 四、代码导航（imenu / xref / project，均为内置）
 ;; ---------------------------------------------------------------------------
 
+;; 注意：下面这些内置命令都有"必填参数"，而参数是它们在 interactive 声明里
+;; 自己向用户索取的。所以这里一律用 call-interactively 调用，让命令自己去问，
+;; 不要直接 (project-find-regexp) 这样零参数调用，否则报
+;; "Wrong number of arguments"。
+
 (defun my-imenu-symbols ()
   "列出当前文件的函数/类/结构，回车跳转。"
   (interactive)
   (condition-case nil
-      (imenu)
+      (call-interactively #'imenu)
     (error (message "此模式没有可索引的结构"))))
 
 (defun my-find-definitions ()
   "跳到光标处符号的定义处（内置 xref）。"
   (interactive)
   (if (fboundp 'xref-find-definitions)
-      (xref-find-definitions)
+      (call-interactively #'xref-find-definitions)
     (message "需要 Emacs 25+ 的 xref")))
 
 (defun my-pop-xref ()
@@ -181,7 +186,8 @@
     (message "需要 xref")))
 
 (defun my-project-find-file ()
-  "在项目（git 仓库等）内快速找文件。"
+  "在项目（git 仓库等）内快速找文件。
+用 C-u 前缀调用时，会把 gitignore 忽略的文件也一并列出。"
   (interactive)
   (if (fboundp 'project-find-file)
       (call-interactively #'project-find-file)
@@ -399,7 +405,7 @@
 (defvar my-quick-places
   '((?1 . "~/Projets")      ; ← 例：填一个目录  如 "~/work/projectA"
     (?2 . "~/.emacs")      ; ← 例：填一个文件  如 "~/work/projectA/src/main.c"
-    (?3 . nil)      ; ← 文件或目录皆可
+    (?3 . "/home/cien/Projets/Linux011/src/V0.11")      ; ← 文件或目录皆可
     (?4 . nil))
   "C-c p <数字> 要打开的路径：元素为 (按键字符 . 路径)。")
 
