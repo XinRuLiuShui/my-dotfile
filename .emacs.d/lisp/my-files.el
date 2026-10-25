@@ -7,7 +7,8 @@
 (defconst my-common-files
   '(("Emacs init" . "~/.emacs.d/init.el")
     ("Log highlight" . "~/.emacs.d/lisp/log-highlight.el")
-    ("My files config" . "~/.emacs.d/lisp/my-files.el"))
+    ("My files config" . "~/.emacs.d/lisp/my-files.el")
+    ("i3 config" . "~/.config/i3/config"))
   "Frequently used files.")
 
 
@@ -19,6 +20,7 @@
   '(("Emacs config" . "~/.emacs.d/")
     ("Emacs lisp" . "~/.emacs.d/lisp/")
     ("stm32-asm" . "~/Projets/stm32_asm/")
+    ("stm32-std" . "~/Embedded/")
     ;; ("STM32" . "D:/Projects/STM32/")
     ;; ("RK3506" . "D:/Projects/RK3506/")
     ;; ("Linux" . "D:/Projects/Linux/")

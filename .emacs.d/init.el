@@ -57,6 +57,13 @@
   )
 
 
+(use-package company
+  :ensure t
+  :config
+  (global-company-mode)
+
+)
+
 ;; 把 lisp 目录加入 load-path
 (add-to-list 'load-path (expand-file-name "lisp" user-emacs-directory))
 

@@ -1,0 +1,14 @@
+#!/bin/sh
+
+target=$(date -d '2027-02-06' +%s) || exit 1
+today=$(date -d "$(date +%F)" +%s) || exit 1
+days=$(( (target - today) / 86400 ))
+
+if [ "$days" -gt 0 ]; then
+    printf '距离目标日期还有 %s 天\n' "$days"
+elif [ "$days" -eq 0 ]; then
+    printf '今天就是目标日期\n'
+else
+    printf '目标日期已过去 %s 天\n' "$((-days))"
+fi
+

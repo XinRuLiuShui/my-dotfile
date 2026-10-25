@@ -208,11 +208,13 @@ bindsym $mod+r mode "resize"
 # finds out, if available)
 bar {
 #        status_command ~/.config/i3status/my_i3status.sh # i3status
-        status_command i3status | python3 ~/.config/i3status/test_date.py
+#        status_command i3status | python3 ~/.config/i3status/test_date.py
+#	 status_command i3blocks
+	 status_command SCRIPT_DIR=~/.config/i3blocks/script i3blocks
 #        padding 2px
 }
 
-font pango:JetBrains Mono 18
+font pango:JetBrains Mono 12
 #bindsym Print exec flameshot gui
 
 exec --no-startup-id fcitx5 -d
@@ -236,7 +238,10 @@ exec_always --no-startup-id flameshot
 assign [class="firefox-esr"] $ws1
 assign [class="Emacs"] $ws2
 assign [class="v2rayN"] $ws9
-exec_always --no-startup-id v2rayn
+
+exec --no-startup-id firefox-esr
+exec --no-startup-id emacs
+exec --no-startup-id v2rayn
 
 for_window [class="copyq"] floating enable
 exec_always --no-startup-id copyq

@@ -10,6 +10,9 @@
 !.config/i3status/config
 !.config/i3status/my_i3status.sh
 !.config/i3status/test_date.py
+!.config/i3blocks/
+!.config/i3blocks/script
+!.config/i3blocks/script/**
 !.profile
 !.emacs.snippets/
 !.emacs.snippets/**
